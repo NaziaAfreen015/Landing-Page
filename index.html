@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study Landing Page</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121a33;
+            --text: #e7ecff;
+            --muted: #b7c2ffcc;
+            --accent: #6aa9ff;
+            --accent2: #7c5cff;
+            --ok: #35d07f;
+            --warn: #ffcc66;
+            --danger: #ff6b6b;
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+            --radius: 16px;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: radial-gradient(1200px 600px at 20% 0%, rgba(124, 92, 255, 0.35), transparent 60%),
+                radial-gradient(900px 600px at 80% 10%, rgba(106, 169, 255, 0.30), transparent 55%),
+                var(--bg);
+            min-height: 100vh;
+        }
+
+        .wrap {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 60px;
+        }
+
+        header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 0.2px;
+        }
+
+        .title p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow);
+            font-size: 13px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            header {
+                flex-direction: column
+            }
+
+            .badge {
+                align-self: flex-start
+            }
+        }
+
+        .card {
+            background: rgba(18, 26, 51, 0.85);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .card .hd {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .card .hd h2 {
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+        }
+
+        .card .bd {
+            padding: 16px 18px 18px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .kv {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 10px 12px;
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .kv .k {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .kv .v {
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--text);
+            padding: 10px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.05s ease, background 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn.primary {
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+        }
+
+        .btn.primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn.ok {
+            border: none;
+            background: linear-gradient(135deg, var(--ok), #2aaeff);
+        }
+
+        .pill {
+            font-family: var(--mono);
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .callout {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .callout strong {
+            color: var(--text)
+        }
+
+        .callout.warn {
+            border-color: rgba(255, 204, 102, 0.35)
+        }
+
+        .callout.warn strong {
+            color: var(--warn)
+        }
+
+        .callout.danger {
+            border-color: rgba(255, 107, 107, 0.35)
+        }
+
+        .callout.danger strong {
+            color: var(--danger)
+        }
+
+        .callout.ok {
+            border-color: rgba(53, 208, 127, 0.35)
+        }
+
+        .callout.ok strong {
+            color: var(--ok)
+        }
+
+        ol {
+            margin: 10px 0 0 18px;
+            padding: 0;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        code {
+            font-family: var(--mono);
+            font-size: 0.95em;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        footer {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <div class="title">
+                <h1>Study Setup & Instructions</h1>
+                <p>
+                    Please follow the steps below to install the Chrome extension and begin the study.
+                    Keep this tab open while you complete the tasks.
+                </p>
+            </div>
+            <div class="badge">
+                <span class="pill">External study</span>
+                <span id="statusText">Waiting for Prolific parameters…</span>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Left: Instructions -->
+            <section class="card">
+                <div class="hd">
+                    <h2>Step-by-step</h2>
+                    <span class="pill">~2–5 min setup</span>
+                </div>
+                <div class="bd">
+                    <ol>
+                        <li>
+                            Install the extension:
+                            <div class="row">
+                                <!-- TODO: replace href with your Chrome Web Store URL -->
+                                <a class="btn primary" id="installBtn"
+                                    href="https://CHROME_WEB_STORE_EXTENSION_URL_HERE" target="_blank" rel="noopener">
+                                    Install Chrome Extension
+                                </a>
+                            </div>
+                        </li>
+
+                        <li>
+                            Confirm your Prolific ID:
+                            <div class="callout" id="pidCallout">
+                                <strong>Your Prolific ID:</strong>
+                                <span id="pidValue" class="pill">Not found</span>
+                                <div class="row">
+                                    <button class="btn" id="copyPidBtn" type="button">Copy Prolific ID</button>
+                                </div>
+                                <div style="margin-top:8px; font-size:13px;">
+                                    If the extension asks for your Prolific ID, paste it exactly.
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            How to use the extension (placeholder — replace with your real steps):
+                            <div class="callout">
+                                <ol>
+                                    <li>Click the extension icon in Chrome’s toolbar.</li>
+                                    <li>Follow the on-screen instructions inside the extension.</li>
+                                    <li>Complete all tasks until you see the “Finished” screen.</li>
+                                </ol>
+                            </div>
+                        </li>
+
+                        <li>
+                            Start the study:
+                            <div class="row">
+                                <!-- TODO: replace with the webpage your extension expects to run on -->
+                                <a class="btn ok" id="startBtn" href="https://YOUR_STUDY_START_PAGE_HERE"
+                                    target="_blank" rel="noopener">
+                                    I installed it — Start
+                                </a>
+                            </div>
+                            <div class="callout warn" style="margin-top:10px;">
+                                <strong>Note:</strong> Chrome won’t let a webpage automatically open an extension popup.
+                                If you don’t see the extension UI, click the extension icon manually.
+                            </div>
+                        </li>
+                    </ol>
+
+                    <div class="callout danger" style="margin-top:14px;">
+                        <strong>Do not close this tab</strong> until you have completed the study (you may need to
+                        return here to copy your Prolific ID).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Debug / Parameters -->
+            <aside class="card">
+                <div class="hd">
+                    <h2>Prolific parameters</h2>
+                    <span class="pill">auto-detected</span>
+                </div>
+                <div class="bd">
+                    <p style="margin:0 0 10px;">
+                        If you came from Prolific, these values should be present. They help link your session to your
+                        submission.
+                    </p>
+
+                    <div class="kv">
+                        <div class="k">PROLIFIC_PID</div>
+                        <div class="v" id="kv_pid">—</div>
+                        <div class="k">STUDY_ID</div>
+                        <div class="v" id="kv_study">—</div>
+                        <div class="k">SESSION_ID</div>
+                        <div class="v" id="kv_session">—</div>
+                    </div>
+
+                    <div class="callout ok" id="paramOk" style="display:none; margin-top:12px;">
+                        <strong>Looks good:</strong> parameters detected.
+                    </div>
+
+                    <div class="callout warn" id="paramWarn" style="display:none; margin-top:12px;">
+                        <strong>Missing parameters:</strong> if you opened this page manually, that’s expected.
+                        Participants should launch from Prolific so the IDs are appended automatically.
+                    </div>
+
+                    <div class="callout" style="margin-top:12px;">
+                        <strong>Developer note (optional):</strong><br />
+                        If your extension uses a content script on this domain, you can forward these values into
+                        <code>chrome.storage.local</code> via <code>window.postMessage</code>.
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <footer>
+            If you need help, contact the researcher via Prolific messages and include your Prolific ID.
+        </footer>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
