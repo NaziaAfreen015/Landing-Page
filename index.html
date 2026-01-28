@@ -389,394 +389,533 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Study Setup & Instructions</title>
-  <style>
-    :root{
-      --bg:#0b1020;
-      --card:#121a33;
-      --text:#e7ecff;
-      --muted:#b7c2ffcc;
-      --accent:#6aa9ff;
-      --accent2:#7c5cff;
-      --ok:#35d07f;
-      --warn:#ffcc66;
-      --danger:#ff6b6b;
-      --border: rgba(255,255,255,0.10);
-      --shadow: 0 14px 40px rgba(0,0,0,0.35);
-      --radius: 16px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study Setup & Instructions</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --card: #121a33;
+            --text: #e7ecff;
+            --muted: #b7c2ffcc;
+            --accent: #6aa9ff;
+            --accent2: #7c5cff;
+            --ok: #35d07f;
+            --warn: #ffcc66;
+            --danger: #ff6b6b;
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+            --radius: 16px;
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(124,92,255,0.35), transparent 60%),
-                  radial-gradient(900px 600px at 80% 10%, rgba(106,169,255,0.30), transparent 55%),
-                  var(--bg);
-      min-height: 100vh;
-    }
+        * {
+            box-sizing: border-box
+        }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 28px 18px 60px;
-    }
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--text);
+            background: radial-gradient(1200px 600px at 20% 0%, rgba(124, 92, 255, 0.35), transparent 60%),
+                radial-gradient(900px 600px at 80% 10%, rgba(106, 169, 255, 0.30), transparent 55%),
+                var(--bg);
+            min-height: 100vh;
+        }
 
-    header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
+        .wrap {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 18px 60px;
+        }
 
-    .title h1{
-      margin:0;
-      font-size: 28px;
-      letter-spacing: 0.2px;
-    }
-    .title p{
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.45;
-      max-width: 70ch;
-    }
+        header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
 
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      box-shadow: var(--shadow);
-      font-size: 13px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
+        .title h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 0.2px;
+        }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 16px;
-      margin-top: 14px;
-    }
+        .title p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            line-height: 1.45;
+            max-width: 70ch;
+        }
 
-    @media (max-width: 900px){
-      .grid{grid-template-columns: 1fr}
-      header{flex-direction:column}
-      .badge{align-self:flex-start}
-    }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow);
+            font-size: 13px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
 
-    .card{
-      background: rgba(18,26,51,0.85);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 14px;
+        }
 
-    .card .hd{
-      padding: 16px 18px;
-      border-bottom: 1px solid var(--border);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-    }
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
 
-    .card .hd h2{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: 0.2px;
-    }
+            header {
+                flex-direction: column
+            }
 
-    .card .bd{
-      padding: 16px 18px 18px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
+            .badge {
+                align-self: flex-start
+            }
+        }
 
-    .row{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
+        .card {
+            background: rgba(18, 26, 51, 0.85);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
 
-    .btn{
-      appearance:none;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.07);
-      color: var(--text);
-      padding: 10px 12px;
-      border-radius: 12px;
-      cursor:pointer;
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform 0.05s ease, background 0.2s ease;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 8px;
-    }
-    .btn:hover{ background: rgba(255,255,255,0.10); }
-    .btn:active{ transform: translateY(1px); }
+        .card .hd {
+            padding: 16px 18px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
 
-    .btn.primary{
-      border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-    .btn.primary:hover{ filter: brightness(1.05); }
+        .card .hd h2 {
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+        }
 
-    .btn.ok{
-      border: none;
-      background: linear-gradient(135deg, var(--ok), #2aaeff);
-    }
+        .card .bd {
+            padding: 16px 18px 18px;
+            color: var(--muted);
+            line-height: 1.55;
+        }
 
-    .pill{
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
 
-    .callout{
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-    }
-    .callout strong{color: var(--text)}
-    .callout.warn{border-color: rgba(255,204,102,0.35)}
-    .callout.warn strong{color: var(--warn)}
-    .callout.danger{border-color: rgba(255,107,107,0.35)}
-    .callout.danger strong{color: var(--danger)}
-    .callout.ok{border-color: rgba(53,208,127,0.35)}
-    .callout.ok strong{color: var(--ok)}
+        .btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.07);
+            color: var(--text);
+            padding: 10px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.05s ease, background 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-    ol{
-      margin: 10px 0 0 18px;
-      padding: 0;
-    }
-    li{margin: 6px 0;}
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.10);
+        }
 
-    .step-title{
-      color: var(--text);
-      font-weight: 700;
-    }
+        .btn:active {
+            transform: translateY(1px);
+        }
 
-    .mini{
-      font-size: 13px;
-      color: var(--muted);
-    }
+        .btn.primary {
+            border: none;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+        }
 
-    .imgph{
-      margin-top: 10px;
-      border: 1px dashed rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .imgph strong{ color: var(--text); }
+        .btn.primary:hover {
+            filter: brightness(1.05);
+        }
 
-    .divider{
-      height: 1px;
-      background: rgba(255,255,255,0.10);
-      margin: 14px 0;
-    }
+        .btn.ok {
+            border: none;
+            background: linear-gradient(135deg, var(--ok), #2aaeff);
+        }
 
-    footer{
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-      opacity: 0.9;
-    }
-  </style>
+        .pill {
+            font-family: var(--mono);
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .callout {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .callout strong {
+            color: var(--text)
+        }
+
+        .callout.warn {
+            border-color: rgba(255, 204, 102, 0.35)
+        }
+
+        .callout.warn strong {
+            color: var(--warn)
+        }
+
+        .callout.danger {
+            border-color: rgba(255, 107, 107, 0.35)
+        }
+
+        .callout.danger strong {
+            color: var(--danger)
+        }
+
+        .callout.ok {
+            border-color: rgba(53, 208, 127, 0.35)
+        }
+
+        .callout.ok strong {
+            color: var(--ok)
+        }
+
+        ol {
+            margin: 10px 0 0 18px;
+            padding: 0;
+        }
+
+        li {
+            margin: 6px 0;
+        }
+
+        .step-title {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .mini {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .imgph {
+            margin-top: 10px;
+            border: 1px dashed rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .imgph strong {
+            color: var(--text);
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.10);
+            margin: 14px 0;
+        }
+
+        footer {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 12px;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .block {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, 0.03);
+            box-shadow: var(--shadow);
+            padding: 16px;
+            margin-top: 14px;
+        }
+
+        .block header {
+            margin-bottom: 12px;
+        }
+
+        .block .grid {
+            margin-top: 0;
+        }
+        .badge{
+  justify-self: center;   /* centers the badge */
+}
+    </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <div class="title">
-        <h1>Study Setup & Instructions</h1>
-        <p>
-          Please follow the steps below to install the Chrome extension and complete the study.
-          Keep this tab open while you work.
-        </p>
-      </div>
-      <div class="badge">
-        <span class="pill">Extension study</span>
-        <span>Read these instructions before starting</span>
-      </div>
-    </header>
+    <h1 style="text-align: center; font-size: 30px; margin-top: 20px;">A Study on Explainable Browser Fingerprinting</h1>
+    <!-- <div class="badge" >
+  <a href="#privacy" class="pill" style="text-decoration:none;">Privacy</a>
+  <a href="#payment" class="pill" style="text-decoration:none;">Payment</a>
+  <a href="#instructions" class="pill" style="text-decoration:none;">Instructions</a>
+</div> -->
 
-    <div class="grid">
+    <div class="wrap">
+        <div id="privacy" class="callout danger" style="margin-bottom:30px; font-size:25px; line-height:1.6;">
+            <strong>Privacy Concern:</strong>
+            We collect your answers, a token for each site, your prolific id, and basic interaction timing to prevent
+            spam.
+            No browsing history or personal data is collected.
+        </div>
+        <div id="instructions" class="block">
+            <header>
+                <div class="title">
+                    <h1>Study Setup & Instructions</h1>
+                    <p>
+                        Please follow the steps below to install the Chrome extension and complete the study.
+                        Keep this tab open while you work.
+                    </p>
+                </div>
+                <div class="badge">
+                    <span class="pill">Extension study</span>
+                    <span>Read these instructions before starting</span>
+                </div>
+            </header>
 
-      <section class="card">
-        <div class="hd">
-          <h2>Study Setup</h2>
-          <span class="pill">~1–3 min setup</span>
+            <div class="grid">
+
+                <section class="card">
+                    <div class="hd">
+                        <h2>Study Setup</h2>
+                        <span class="pill">~1–3 min setup</span>
+                    </div>
+
+                    <div class="bd">
+                        <div class="callout warn">
+                            <strong>Important:</strong> You may need to click the extension icon more than once.
+                            Chrome won’t let a webpage automatically open an extension popup.
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <h3 style="margin:0; color:var(--text); font-size:15px;">Setup (one-time)</h3>
+                        <ol>
+                            <li>
+                                <span class="step-title">Install the extension:</span><br />
+                                <div class="row">
+
+                                    <a class="btn primary" id="installBtn"
+                                        href="https://CHROME_WEB_STORE_EXTENSION_URL_HERE" target="_blank"
+                                        rel="noopener">
+                                        Install Chrome Extension
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="step-title">Open the extension from the toolbar.</span><br />
+                                <span class="mini">
+                                    Click the Extensions icon
+                                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3px;">
+                                        <path fill="currentColor"
+                                            d="M13.5 3a2.5 2.5 0 0 0-2.45 2H9a3 3 0 0 0-3 3v1.72a2.5 2.5 0 1 0 0 4.56V16a3 3 0 0 0 3 3h2.05A2.5 2.5 0 1 0 15 19h2a3 3 0 0 0 3-3v-2.05a2.5 2.5 0 1 0 0-3.9V8a3 3 0 0 0-3-3h-2.05A2.5 2.5 0 0 0 13.5 3ZM9 7h3.5a1 1 0 0 0 1-1V5.5a.5.5 0 0 1 1 0V6a1 1 0 0 0 1 1H17a1 1 0 0 1 1 1v3.5a1 1 0 0 0 1 1h.5a.5.5 0 1 1 0 1H19a1 1 0 0 0-1 1V16a1 1 0 0 1-1 1h-3.5a1 1 0 0 0-1 1v.5a.5.5 0 1 1-1 0V18a1 1 0 0 0-1-1H9a1 1 0 0 1-1-1v-3.5a1 1 0 0 0-1-1h-.5a.5.5 0 1 1 0-1H7a1 1 0 0 0 1-1V8a1 1 0 0 1 1-1Z" />
+                                    </svg>
+                                    beside the search bar on the toolbar.
+                                </span>
+
+                            </li>
+
+                            <li>
+                                <span class="step-title">Pin the extension to the toolbar.</span><br />
+                                <span class="mini">
+                                    Find the study extension <img src="assets/study-removebg-preview.png" alt="Pin icon"
+                                        style="max-width:110px; height:auto; vertical-align:middle; margin-left:-9px; margin-right:-10px;">
+                                    → click the pin icon
+                                    <img src="assets/pin-removebg-preview.png" alt="Pin icon"
+                                        style="max-width:110px; height:auto; vertical-align:middle; margin-left:-9px; margin-right:-10px;">
+                                    to keep it visible in the toolbar.
+                                </span>
+
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <div class="hd">
+                        <h2>How to use the extension</h2>
+                    </div>
+
+                    <div class="bd">
+
+
+                        <ol start="1">
+                            <li>
+                                <span class="step-title">Start the study:</span>
+
+                                <div class="row">
+
+                                    <a class="btn primary" id="installBtn" href="https://bbc.com" target="_blank"
+                                        rel="noopener">
+                                        I installed it — Launch Study
+                                    </a>
+                                </div>
+
+
+
+                                <span class="mini">
+                                    Or you can click the extension icon, then click <span class="pill">Launch a
+                                        website</span>.
+                                    <br />
+                                    You’ll be redirected to a website.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Open the panel for the website.</span><br />
+                                <span class="mini">
+
+                                    Click the extension icon again and select <span class="pill">Open panel for this
+                                        page</span>.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Answer all questions (required).</span><br />
+                                <span class="mini">
+                                    All questions are mandatory. <br /> Use <span class="pill">→</span> to go to the
+                                    next
+                                    page and
+                                    <span class="pill">←</span> to go to the previous one.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Review and submit (one submission per site).</span><br />
+                                <span class="mini">
+                                    After you answer everything, <span class="pill">Review &amp; Submit</span> will
+                                    automatically be enabled. <br />
+                                    Click it to review your answers, change if needed, then submit.<br /> You can submit
+                                    only once
+                                    for a site.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Jump to unanswered questions (if needed).</span><br />
+                                <span class="mini">
+                                    Clicking <span class="pill">Review Unanswered</span> will take you to the first
+                                    unanswered question.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Launch the second website.</span><br />
+                                <span class="mini">
+                                    After submitting the first site, <span class="pill">Launch another website</span>
+                                    will
+                                    be enabled. <br />
+                                    Click it to complete the survey for the next site.
+                                </span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Complete exactly two sites.</span><br />
+                                <span class="mini">You are required to finish the survey for <strong>two</strong> sites
+                                    only.</span>
+                            </li>
+
+                            <li>
+                                <span class="step-title">Finish and remove the extension.</span><br />
+                                <span class="mini">
+                                    When you finish both sites, follow the final screen instructions to complete the
+                                    Prolific submission. <br />
+                                    After you complete the survey, delete/uninstall the extension (recommended). <br />
+                                    If
+                                    you
+                                    forget, the extension will be deleted automatically.
+                                </span>
+                            </li>
+                        </ol>
+
+                    </div>
+                </section>
+
+
+
+                <!-- <aside class="card">
+                <div class="hd">
+                    <h2>Quick reminders</h2>
+                    <span class="pill">Read this</span>
+                </div>
+                <div class="bd">
+                    <div class="callout">
+                        <strong>Need the extension icon?</strong><br />
+                        If you don’t see it, click the puzzle-piece icon and pin the extension.
+                    </div>
+
+                    <div class="callout">
+                        <strong>When a website opens:</strong><br />
+                        Click the extension icon again and choose <span class="pill">Open panel for this page</span>.
+                    </div>
+
+                    <div class="callout ok">
+                        <strong>Two sites total:</strong><br />
+                        Submit once per site, then launch the next website.
+                    </div>
+
+                    <div class="callout warn">
+                        <strong>Images to add later:</strong>
+                        <ol>
+                            <li>Toolbar extension icon highlighted</li>
+                            <li>Pin icon screenshot</li>
+                        </ol>
+                    </div>
+                </div>
+            </aside> -->
+
+
+
+            </div>
+        </div>
+        <div id="payment" class="callout ok" style="margin-top:16px; font-size:25px; line-height:1.6;">
+            <strong >Payment Policy:</strong>
+            Payment is issued after a manual review to confirm the study was completed as instructed. Failure to give the attention token or submitting incomplete/random answers may result in disqualification. 
+            Please submit only once per site. 
         </div>
 
-        <div class="bd">
-          <div class="callout warn">
-            <strong>Important:</strong> You may need to click the extension icon more than once.
-            Chrome won’t let a webpage automatically open an extension popup.
-          </div>
 
-          <div class="divider"></div>
-
-          <h3 style="margin:0; color:var(--text); font-size:15px;">Setup (one-time)</h3>
-          <ol>
-            <li>
-                            Install the extension:
-                            <div class="row">
-                                
-                                <a class="btn primary" id="installBtn"
-                                    href="https://CHROME_WEB_STORE_EXTENSION_URL_HERE" target="_blank" rel="noopener">
-                                    Install Chrome Extension
-                                </a>
-                            </div>
-                        </li>
-            <li>
-              <span class="step-title">Open the extension from the toolbar.</span><br/>
-              <span class="mini">Click the extension icon in Chrome’s toolbar.</span>
-              <div class="imgph"><strong>Image placeholder:</strong> toolbar icon highlighted (hover/arrow pointing to the extension icon)</div>
-            </li>
-
-            <li>
-              <span class="step-title">Pin the extension to the toolbar.</span><br/>
-              <span class="mini">Click the puzzle-piece icon → find the study extension → click the pin.</span>
-              <div class="imgph"><strong>Image placeholder:</strong> “Pin extension” screenshot</div>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-        <section class="card">
-        <div class="hd">
-          <h2>How to use the extension</h2>
-        </div>
-
-        <div class="bd">
-
-
-          <ol start="3">
-            <li>
-              <span class="step-title">Start the study:</span><br/>
-              <a class="btn ok" href="https://bbc.com" target="_blank" rel="noopener">
-              I installed it — Start
-            </a>
-              <span class="mini">Or You can click the extension icon, then click <span class="pill">Launch a website</span>.</span>
-            </li>
-
-            <li>
-              <span class="step-title">Open the panel for the website.</span><br/>
-              <span class="mini">
-                You’ll be redirected to a website. Because Chrome won’t automatically open the extension popup,
-                click the extension icon again and select <span class="pill">Open panel for this page</span>.
-              </span>
-            </li>
-
-            <li>
-              <span class="step-title">Answer all questions (required).</span><br/>
-              <span class="mini">
-                All questions are mandatory. Use <span class="pill">→</span> to go to the next page and
-                <span class="pill">←</span> to go to the previous one.
-              </span>
-            </li>
-
-            <li>
-              <span class="step-title">Review and submit (one submission per site).</span><br/>
-              <span class="mini">
-                After you answer everything, <span class="pill">Review &amp; Submit</span> will automatically be enabled.
-                Click it to review your answers, change if needed, then submit. You can submit only once for a site.
-              </span>
-            </li>
-
-            <li>
-              <span class="step-title">Jump to unanswered questions (if needed).</span><br/>
-              <span class="mini">
-                Clicking <span class="pill">Review Unanswered</span> will take you to the first unanswered question.
-              </span>
-            </li>
-
-            <li>
-              <span class="step-title">Launch the second website.</span><br/>
-              <span class="mini">
-                After submitting the first site, <span class="pill">Launch another website</span> will be enabled.
-                Click it to complete the survey for the next site.
-              </span>
-            </li>
-
-            <li>
-              <span class="step-title">Complete exactly two sites.</span><br/>
-              <span class="mini">You are required to finish the survey for <strong>two</strong> sites only.</span>
-            </li>
-
-            <li>
-              <span class="step-title">Finish and remove the extension.</span><br/>
-              <span class="mini">
-                When you finish both sites, follow the final screen instructions to complete the Prolific submission.
-                After you complete the survey, delete/uninstall the extension (recommended). If you forget, the extension will be deleted automatically.
-              </span>
-            </li>
-          </ol>
-
-        </div>
-      </section>
-
-      <aside class="card">
-        <div class="hd">
-          <h2>Quick reminders</h2>
-          <span class="pill">Read this</span>
-        </div>
-        <div class="bd">
-          <div class="callout">
-            <strong>Need the extension icon?</strong><br/>
-            If you don’t see it, click the puzzle-piece icon and pin the extension.
-          </div>
-
-          <div class="callout">
-            <strong>When a website opens:</strong><br/>
-            Click the extension icon again and choose <span class="pill">Open panel for this page</span>.
-          </div>
-
-          <div class="callout ok">
-            <strong>Two sites total:</strong><br/>
-            Submit once per site, then launch the next website.
-          </div>
-
-          <div class="callout warn">
-            <strong>Images to add later:</strong>
-            <ol>
-              <li>Toolbar extension icon highlighted</li>
-              <li>Pin icon screenshot</li>
-            </ol>
-          </div>
-        </div>
-      </aside>
+        <footer>
+            If you need help, message the researcher via Prolific and describe what step you’re stuck on.
+        </footer>
     </div>
-
-    <footer>
-      If you need help, message the researcher via Prolific and describe what step you’re stuck on.
-    </footer>
-  </div>
 </body>
 <script src="index.js"></script>
+
 </html>
