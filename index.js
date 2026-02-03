@@ -6,24 +6,25 @@ const STUDY = params.get("STUDY_ID") || "";
 const SESSION = params.get("SESSION_ID") || "";
 
 // Populate UI
-document.getElementById("kv_pid").textContent = PID || "—";
-document.getElementById("kv_study").textContent = STUDY || "—";
-document.getElementById("kv_session").textContent = SESSION || "—";
+// document.getElementById("kv_pid").textContent = PID || "—";
+// document.getElementById("kv_study").textContent = STUDY || "—";
+// document.getElementById("kv_session").textContent = SESSION || "—";
 
-const pidPill = document.getElementById("pidValue");
-pidPill.textContent = PID || "Not found";
+// const pidPill = document.getElementById("pidValue");
+// pidPill.textContent = PID || "Not found";
 
-const statusText = document.getElementById("statusText");
-const okBox = document.getElementById("paramOk");
-const warnBox = document.getElementById("paramWarn");
+// const statusText = document.getElementById("statusText");
+// const okBox = document.getElementById("paramOk");
+// const warnBox = document.getElementById("paramWarn");
 
 if (PID) {
-    statusText.textContent = "Prolific parameters detected";
-    okBox.style.display = "block";
+    // statusText.textContent = "Prolific parameters detected";
+    // okBox.style.display = "block";
     console.log(`Prolific parameters found: PID=${PID}, STUDY=${STUDY}, SESSION=${SESSION}`);
 } else {
-    statusText.textContent = "Opened without Prolific parameters";
-    warnBox.style.display = "block";
+    // statusText.textContent = "Opened without Prolific parameters";
+    // warnBox.style.display = "block";
+    console.warn("No Prolific parameters found in the URL.");
 }
 
 // Copy PID button
