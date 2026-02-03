@@ -20,28 +20,29 @@ const warnBox = document.getElementById("paramWarn");
 if (PID) {
     statusText.textContent = "Prolific parameters detected";
     okBox.style.display = "block";
+    console.log(`Prolific parameters found: PID=${PID}, STUDY=${STUDY}, SESSION=${SESSION}`);
 } else {
     statusText.textContent = "Opened without Prolific parameters";
     warnBox.style.display = "block";
 }
 
 // Copy PID button
-document.getElementById("copyPidBtn").addEventListener("click", async () => {
-    if (!PID) return alert("No PROLIFIC_PID found in the URL.");
-    try {
-        await navigator.clipboard.writeText(PID);
-        alert("Copied PROLIFIC_PID to clipboard.");
-    } catch (e) {
-        // Fallback
-        const ta = document.createElement("textarea");
-        ta.value = PID;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        document.body.removeChild(ta);
-        alert("Copied PROLIFIC_PID to clipboard.");
-    }
-});
+// document.getElementById("copyPidBtn").addEventListener("click", async () => {
+//     if (!PID) return alert("No PROLIFIC_PID found in the URL.");
+//     try {
+//         await navigator.clipboard.writeText(PID);
+//         alert("Copied PROLIFIC_PID to clipboard.");
+//     } catch (e) {
+//         // Fallback
+//         const ta = document.createElement("textarea");
+//         ta.value = PID;
+//         document.body.appendChild(ta);
+//         ta.select();
+//         document.execCommand("copy");
+//         document.body.removeChild(ta);
+//         alert("Copied PROLIFIC_PID to clipboard.");
+//     }
+// });
 
 // Optional: store params in THIS PAGE's localStorage for convenience (note: extension can't read this)
 try {
