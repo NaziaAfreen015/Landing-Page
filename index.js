@@ -21,6 +21,7 @@ if (PID) {
     // statusText.textContent = "Prolific parameters detected";
     // okBox.style.display = "block";
     console.log(`Prolific parameters found: PID=${PID}, STUDY=${STUDY}, SESSION=${SESSION}`);
+    console.log("Location origin: ", location.origin);
 } else {
     // statusText.textContent = "Opened without Prolific parameters";
     // warnBox.style.display = "block";
@@ -60,5 +61,5 @@ if (PID) {
         PROLIFIC_PID: PID,
         STUDY_ID: STUDY,
         SESSION_ID: SESSION
-    }, "*");
+    }, location.origin);
 }
